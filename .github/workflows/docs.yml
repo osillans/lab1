@@ -2,9 +2,18 @@ name: Generate and Deploy Docs
 
 on:
   push:
-    branches: 
+    branches:
       - main
       - feature/docs-ci
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: "pages"
+  cancel-in-progress: true
 
 jobs:
   build:
@@ -12,12 +21,10 @@ jobs:
 
     steps:
       - name: Checkout
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
       - name: Install Doxygen
-        uses: mattnotmitt/doxygen-action@v1.9
-        with:
-          working-directory: .
+        run: sudo apt-get update && sudo apt-get install -y doxygen graphviz
 
       - name: Generate documentation
         run: doxygen Doxyfile
@@ -29,9 +36,6 @@ jobs:
 
   deploy:
     needs: build
-    permissions:
-      pages: write
-      id-token: write
     runs-on: ubuntu-latest
     environment:
       name: github-pages
