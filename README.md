@@ -1,8 +1,5 @@
-Лабораторна робота №2.
-Основні зміни:
+Laboratory work #2. Main changes:
 
-Додано Doxygen-коментарі до calculator.h.
-Створено та налаштовано Doxyfile.
-Документація успішно генерується локально.
-Створено GitHub Actions workflow для автоматичної генерації документації.
-Автоматичний деплой на GitHub Pages не завершився успішно, але налаштування CI/CD виконано.
+Added Doxygen comments to calculator.h. Created and configured Doxyfile. 
+Documentation is successfully generated locally. 
+Created GitHub Actions workflow for automatic documentation generation.
